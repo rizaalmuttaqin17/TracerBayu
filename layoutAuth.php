@@ -53,12 +53,7 @@
                 </div>
                 <div class="d-flex d-lg-none flex-column-auto flex-column flex-sm-row justify-content-between align-items-center mt-5 p-5">
                     <div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">
-                        &copy; 2020 Metronic
-                    </div>
-                    <div class="d-flex order-1 order-sm-2 my-2">
-                        <a href="#" class="text-dark-75 text-hover-primary">Privacy</a>
-                        <a href="#" class="text-dark-75 text-hover-primary ml-4">Legal</a>
-                        <a href="#" class="text-dark-75 text-hover-primary ml-4">Contact</a>
+                        &copy; 2021 Tracer Study
                     </div>
                 </div>
             </div>

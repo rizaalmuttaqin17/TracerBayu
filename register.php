@@ -29,7 +29,7 @@
         </div>
         <div class="form-group d-flex flex-wrap flex-center">
             <button type="submit" name="register" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Submit</button>
-            <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-4">Cancel</button>
+            <a type="button" href="login.php" class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-4">Cancel</a>
         </div>
     </form>
 </div>

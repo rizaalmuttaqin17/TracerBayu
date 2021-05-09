@@ -11,10 +11,10 @@
     <form class="form" method="POST" action="login.php">
         <?php include('errors.php'); ?>
         <div class="form-group">
-            <input class="form-control form-control-solid h-auto py-5 px-6" type="email" placeholder="Email" name="email" autocomplete="off" />
+            <input class="form-control form-control-solid h-auto py-5 px-6" type="email" placeholder="Email" name="email" autocomplete="off" required/>
         </div>
         <div class="form-group">
-            <input class="form-control form-control-solid h-auto py-5 px-6" type="password" placeholder="Password" name="password" autocomplete="off" />
+            <input class="form-control form-control-solid h-auto py-5 px-6" type="password" placeholder="Password" name="password" autocomplete="off" required/>
         </div>
         <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
             <a href="forgot-password.php" class="text-dark-50 text-hover-primary my-3 mr-2">
