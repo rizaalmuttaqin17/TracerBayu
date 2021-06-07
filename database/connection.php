@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+	session_start(); 
+} 
 
 // initializing variables
 $nama   = "";
@@ -7,7 +10,7 @@ $email  = "";
 $errors = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', 'root', 'tracer_bayu');
+$db = mysqli_connect('localhost', 'root', '', 'tracer_bayu');
 
 // REGISTER USER
 if (isset($_POST['register'])) {
