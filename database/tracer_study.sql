@@ -24,8 +24,11 @@
 /*!40000 ALTER TABLE `kuisioner_pilihan` DISABLE KEYS */;
 /*!40000 ALTER TABLE `kuisioner_pilihan` ENABLE KEYS */;
 
--- Dumping data for table tracer_bayu.users: ~0 rows (approximately)
+-- Dumping data for table tracer_bayu.users: ~2 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+REPLACE INTO `users` (`id`, `nama`, `nim`, `tempat_lahir`, `tanggal_lahir`, `no_hp`, `foto`, `alamat`, `perguruan_tinggi`, `jurusan`, `prodi`, `email`, `password`, `role`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin@gmail.com', '4297f44b13955235245b2497399d7a93', NULL, NULL, NULL, NULL, NULL),
+	(2, 'admins', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admins@gmail.com', '4297f44b13955235245b2497399d7a93', NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
