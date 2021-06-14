@@ -96,11 +96,12 @@ if (mysqli_num_rows($results)> 0) {
                                         while($data = mysqli_fetch_assoc($results)){
                                             $idJurusanProdi = $dataMahasiswa['id_jurusan_prodi'];
                                             $jurusan_prodi = $data['jurusan_prodi'];
+                                            $iDJurusanProdi = $data['id'];
                                             if ($data['id'] == $dataMahasiswa['id_jurusan_prodi']) {
                                                 
                                                 echo "<option value='$idJurusanProdi' selected>$jurusan_prodi</option>";
                                             }else{
-                                                echo "<option value='$idJurusanProdi'>$jurusan_prodi</option>";
+                                                echo "<option value='$iDJurusanProdi'>$jurusan_prodi</option>";
                                             }
                                         }
                                     }
@@ -131,7 +132,7 @@ if (mysqli_num_rows($results)> 0) {
                                             <i class="la la-phone"></i>
                                         </span>
                                     </div>
-                                    <input type="text" class="form-control "
+                                    <input type="number" class="form-control "
                                         value="<?php echo $dataMahasiswa['no_hp']; ?>" placeholder="Phone" name="no_hp" required />
                                 </div>
                             </div>

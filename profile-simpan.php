@@ -46,6 +46,6 @@ $query =    "UPDATE users
                 data_diri='Lengkap'
                 WHERE id = '$id'
                 ;";
-echo mysqli_query($db, $query);
+mysqli_query($db, $query);
 header("Location:profile.php");
 ?>
