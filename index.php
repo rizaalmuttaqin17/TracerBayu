@@ -35,7 +35,7 @@ if (mysqli_num_rows($results)> 0) {
         </span>
     </div>
     <div class="alert-text">
-        <h2 style="font-family: 'PT Sans', sans-serif;"><b class="mr-1" >Hai, Eko Pujianto </b> <br > Selamat Datang Di Tracer POLITANI Samarinda.</h2>
+        <h2 style="font-family: 'PT Sans', sans-serif;"><b class="mr-1" >Hai, <?php echo $dataMahasiswa['nama']; ?> </b> <br > Selamat Datang Di Tracer POLITANI Samarinda.</h2>
     </div>
 </div>
 <?php 

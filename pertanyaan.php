@@ -29,20 +29,41 @@ if (mysqli_num_rows($results)> 0) {
     if(isset($_POST['idKuisioner'])){
         $IdUser = $dataMahasiswa['id'];
         $idKuisioner = $_POST['idKuisioner'];
+        $sql = "";
         if (isset($_POST['pertanyaan'])) {
             $jawaban = $_POST['pertanyaan'];
-            $sql = "INSERT INTO `tracer_bayu`.`jawaban` (`id_user`, `id_kuisioner_pilihan`, `id_kuisioner`, `jawaban`) VALUES ('$IdUser', '$jawaban', '$idKuisioner', '$jawaban')";
+            $sql = "INSERT INTO `tracer_bayu`.`jawaban` (`id_user`, `id_kuisioner_pilihan`, `id_kuisioner`, `jawaban`,`created_at`) VALUES ('$IdUser', '$jawaban', '$idKuisioner', '$jawaban',NOW())";
             if (isset($_POST['pertanyaanPilihIsi'])) { 
                 $jawabanPertanyaan = $_POST['pertanyaanPilihIsi'];
                 $jawabanPilihan = $_POST['pertanyaan'];
-                $sql = "INSERT INTO `tracer_bayu`.`jawaban` (`id_user`, `id_kuisioner_pilihan`, `id_kuisioner`, `jawaban`) VALUES ('$IdUser', '$jawabanPilihan', '$idKuisioner', '$jawabanPertanyaan')";
+                $sql = "INSERT INTO `tracer_bayu`.`jawaban` (`id_user`, `id_kuisioner_pilihan`, `id_kuisioner`, `jawaban`,`created_at`) VALUES ('$IdUser', '$jawabanPilihan', '$idKuisioner', '$jawabanPertanyaan',NOW())";
             }
+            mysqli_query($db, $sql);
         } else if (isset($_POST['pertanyaanIsi'])) { 
-            $jawaban = $_POST['pertanyaanIsi'];
-            $sql = "INSERT INTO `tracer_bayu`.`jawaban` (`id_user`, `id_kuisioner`, `jawaban`) VALUES ('$IdUser', '$idKuisioner', '$jawaban')";
+            $i = 0;
+            $idPertanyaan = $_POST['idPertanyaan'];
+            foreach ($_POST['pertanyaanIsi'] as $item) {
+                $sql = "INSERT INTO `tracer_bayu`.`jawaban` (`id_user`, `id_kuisioner_pilihan`,  `id_kuisioner`, `jawaban`,`created_at`) VALUES ('$IdUser','$idPertanyaan[$i]', '$idKuisioner', '$item',NOW())";
+                mysqli_query($db, $sql);
+                $i++;
+            }
+
+        }else if (isset($_POST['pertanyaanPilihBanyak'])) { 
+            foreach($_POST['pertanyaanPilihBanyak'] as $item){
+                $sql = "INSERT INTO `tracer_bayu`.`jawaban` (`id_user`, `id_kuisioner_pilihan`, `id_kuisioner`, `jawaban`,`created_at`) VALUES ('$IdUser', '$item', '$idKuisioner', '$item',NOW())";
+                mysqli_query($db, $sql);
+            }
+        }else if (isset($_POST['rating'])) { 
+            foreach($_POST['rating'] as $item){
+                $jawaban = explode(":",$item);
+                if(COUNT($jawaban)>1){
+                    $id_kuisioner_pilihan = $jawaban[1];
+                    $jawabanRating = $jawaban[0];
+                    $sql = "INSERT INTO `tracer_bayu`.`jawaban` (`id_user`, `id_kuisioner_pilihan`, `id_kuisioner`, `jawaban`,`created_at`) VALUES ('$IdUser', '$id_kuisioner_pilihan', '$idKuisioner', '$jawabanRating',NOW())";
+                    mysqli_query($db, $sql);
+                }
+            }
         }
-        
-        mysqli_query($db, $sql);
     }
 }else {
     array_push($errors, "Wrong email/password combination");
@@ -52,7 +73,7 @@ if (mysqli_num_rows($results)> 0) {
 <?php 
 
 if($dataMahasiswa['data_diri']== 'Lengkap'){
-    if($dataMahasiswa['status_pengisian']== 'Belum'){
+    if($dataMahasiswa['status_pengisian']== 'Belum' || isset($_GET['p'])){
         if(!isset($_GET['p'])){
             ?>
             <div class="row">
@@ -93,122 +114,39 @@ if($dataMahasiswa['data_diri']== 'Lengkap'){
                 
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="card card-custom gutter-b example example-compact">
-                        <?php 
-                            if($rowTotal == $kuisioner['idKuisioner']){
-                                ?>
-                                    <form action="simpan-jawaban.php" method="post">  
-                                    <input type="hidden" name="idKuisioner" value="<?php  echo $kuisioner['idKuisioner']; ?>">
-                                    <input type="hidden" name="idUsers" value="<?php  echo $dataMahasiswa['id']; ?>">
+                        <div class="card card-custom gutter-b ">
+                            <?php require('component/form.php'); ?>
+                            <div class="card-header">
+                                <h1 class="card-title" style="font-size:30px;padding:20px;">
+                                    <?php echo $_GET['p']. ". ".$kuisioner['pertanyaan']; ?>
+                                </h1>
+                            </div>
+                            <div class="card-body">
                                 <?php
-                            }else{
-
-                                ?>
-                                    <form action="pertanyaan.php?p=<?php echo $kuisioner['idKuisioner']+1 ?>" method="post"> 
-                                    <input type="hidden" name="idKuisioner" value="<?php  echo $kuisioner['idKuisioner']; ?>">
-                                <?php
-                            }
-                        ?>
-                                <div class="card-header">
-                                    <h1 class="card-title" style="font-size:30px;padding:20px;">
-                                        <?php echo $_GET['p']. ". ".$kuisioner['pertanyaan']; ?>
-                                    </h1>
-                                
-                                </div>
-                                <div class="card-body">
-                                    <?php
-                                        while($data = mysqli_fetch_assoc($results)){
-                                            if($data['type_pilihan'] == "Pilih"){
-                                                ?>
-                                                    <div class="radio-list">
-                                                        <label class="radio">
-                                                            <input type="radio" name="pertanyaan" value="<?php echo $data['idPilihan'] ?>" required>
-                                                            <span></span>
-                                                            <?php echo $data['pilihan']; ?>
-                                                        </label>
-                                                    </div>
-                                                <?php
-                                            }else if($data['type_pilihan'] == "PilihIsi"){
-                                    ?>
-                                    
-                                                <div class="radio-list">
-                                                    <label class="radio">
-                                                        <input type="radio" name="pertanyaan" value="<?php echo $data['idPilihan'] ?>" required>
-                                                        <span></span>
-                                                        <div class="form-group">
-                                                            <?php echo $data['pilihan']; ?> 
-                                                            <input type="text" class="form-control" name="pertanyaanPilihIsi"  placeholder="" required>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                        <?php
-                                            }else if($data['type_pilihan'] == "Isi"){
-                                        ?>
-                                            <div class="form-group">
-                                            <?php echo $data['pilihan']; ?> 
-                                                <input type="text" class="form-control" name="pertanyaanIsi" placeholder="" required>
-                                            </div>
-                                            
-                                            <?php
+                                    while($data = mysqli_fetch_assoc($results)){
+                                        if($data['type_pilihan'] == "Pilih"){
+                                            require('component/pilih.php');
+                                        }else if($data['type_pilihan'] == "PilihIsi"){
+                                            require('component/pilihIsi.php');
+                                        }else if($data['type_pilihan'] == "Isi"){
+                                            require('component/isi.php');
                                         }else if($data['type_pilihan'] == "Rating"){
-                                    ?>
-                                    <div class="row rating">
-                                        <div class="col-md-4" style="padding:20px;">
-                                            <?php echo $data['pilihan']; ?> 
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="radio-inline" style="padding:20px;">
-                                                <label class="radio">
-                                                    <input type="radio" name="pertanyaan<?php echo $data['idPilihan'] ?>" required>
-                                                    <span></span>
-                                                    Sangat Besar
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" name="pertanyaan<?php echo $data['idPilihan'] ?>" required>
-                                                    <span></span>
-                                                    Besar
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" name="pertanyaan<?php echo $data['idPilihan'] ?>" required>
-                                                    <span></span>
-                                                    Cukup Besar
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" name="pertanyaan<?php echo $data['idPilihan'] ?>" required>
-                                                    <span></span>
-                                                    Kurang
-                                                </label>
-                                                <label class="radio">
-                                                    <input type="radio" name="pertanyaan<?php echo $data['idPilihan'] ?>" required>
-                                                    <span></span>
-                                                    Tidak Sama Sekali
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php
-                                }
-                            }
-                            ?>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-center">
-                                        <?php 
-                                            if($rowTotal == $kuisioner['idKuisioner']){
-                                                ?>
-                                                    <button class="btn btn-primary font-weight-bold">Simpan dan lanjut</button>
-                                                <?php
-                                            }else{
-                                                ?>
-                                                    <button  class="btn btn-primary font-weight-bold">Simpan dan lanjut</button>
-                                                <?php
-                                            }
-                                        ?>
-                                    </div>
-                                </div>
-                            </form>
-                    </div>
-                    <div class="col-md-12">
-                            
+                                            require('component/rating.php');
+                                        }else if($data['type_pilihan'] == "PilihBanyak"){
+                                            require('component/pilihBanyak.php');
+                                        }
+                                    }
+                                ?>
+                            </div>
+                            <div class="card-footer d-flex justify-content-center">
+                                <a  style="margin-right:20px;" class="btn btn-secondary font-weight-bold" href="pertanyaan.php?p=<?php echo $kuisioner['idKuisioner']-1 ?>">
+                                    Kembali
+                                </a>
+                                <button class="btn btn-primary font-weight-bold">Simpan dan lanjut</button>
+
+                            </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -230,6 +168,8 @@ if($dataMahasiswa['data_diri']== 'Lengkap'){
                             <div class="col-md-8 align-self-center" style="padding-left:80px;">
                                 
                                 <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu  sudah menyelesaikan <br> Pengisian Kuisioner!</h1>
+                                <a href="pertanyaan.php?p=1"><button class="btn btn-warning btn-lg">Lihat Kuisionermu!</button></a>
+
                             </div>
                         </div>
                     </div>
@@ -264,28 +204,5 @@ if($dataMahasiswa['data_diri']== 'Lengkap'){
 
 <?php startblock('js') ?>
 
-<script>
-    function ratingStar(star){
-  star.click(function(){
-    var stars = $('.ratingW').find('li')
-    stars.removeClass('on');
-    var thisIndex = $(this).parents('li').index();
-    for(var i=0; i <= thisIndex; i++){
-      stars.eq(i).addClass('on');
-    }
-    putScoreNow(thisIndex+1);
-  });
-}
 
-function putScoreNow(i){
-  $('.scoreNow').html(i);
-}
-
-
-$(function(){
-  if($('.ratingW').length > 0){
-      ratingStar($('.ratingW li a'));
-  }
-});
-</script>
 <?php endblock() ?>

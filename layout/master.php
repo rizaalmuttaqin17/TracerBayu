@@ -40,6 +40,12 @@ if (mysqli_num_rows($results)> 0) {
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="assets/plugins/global/plugins.bundle.js"></script>
+    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="assets/js/scripts.bundle.js"></script>
+    <!--end::Global Theme Bundle-->
 </head>
 
 <body id="kt_body" class="header-fixed header-mobile-fixed sidebar-enabled page-loading">
@@ -266,11 +272,6 @@ if (mysqli_num_rows($results)> 0) {
     </script>
     <!--end::Global Config-->
 
-    <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
-    <!--end::Global Theme Bundle-->
 
     <!--begin::Page Vendors(used by this page)-->
     <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
