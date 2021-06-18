@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jun 2021 pada 19.53
+-- Waktu pembuatan: 18 Jun 2021 pada 20.07
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.14
 
@@ -32,17 +32,142 @@ CREATE TABLE `jawaban` (
   `id_user` int(10) UNSIGNED DEFAULT NULL,
   `id_kuisioner` int(10) UNSIGNED DEFAULT NULL,
   `id_kuisioner_pilihan` int(10) UNSIGNED DEFAULT NULL,
-  `jawaban` text DEFAULT NULL
+  `jawaban` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `jawaban`
 --
 
-INSERT INTO `jawaban` (`id`, `id_user`, `id_kuisioner`, `id_kuisioner_pilihan`, `jawaban`) VALUES
-(46, 1, 15, 63, '63'),
-(47, 1, 15, 63, '63'),
-(48, 1, 15, 63, '63');
+INSERT INTO `jawaban` (`id`, `id_user`, `id_kuisioner`, `id_kuisioner_pilihan`, `jawaban`, `created_at`) VALUES
+(413, 3, 16, 153, '5', '2021-06-18 17:47:11'),
+(414, 3, 16, 154, '4', '2021-06-18 17:47:11'),
+(415, 3, 16, 155, '5', '2021-06-18 17:47:11'),
+(416, 3, 16, 156, '5', '2021-06-18 17:47:11'),
+(417, 3, 16, 157, '5', '2021-06-18 17:47:11'),
+(418, 3, 16, 158, '5', '2021-06-18 17:47:11'),
+(419, 3, 16, 159, '5', '2021-06-18 17:47:11'),
+(420, 3, 16, 160, '3', '2021-06-18 17:47:11'),
+(421, 3, 16, 161, '3', '2021-06-18 17:47:11'),
+(422, 3, 16, 162, '4', '2021-06-18 17:47:11'),
+(423, 3, 16, 163, '4', '2021-06-18 17:47:11'),
+(424, 3, 16, 164, '4', '2021-06-18 17:47:11'),
+(425, 3, 16, 165, '4', '2021-06-18 17:47:11'),
+(426, 3, 16, 166, '4', '2021-06-18 17:47:11'),
+(427, 3, 16, 167, '3', '2021-06-18 17:47:11'),
+(428, 3, 16, 168, '4', '2021-06-18 17:47:11'),
+(429, 3, 16, 169, '4', '2021-06-18 17:47:11'),
+(430, 3, 16, 170, '4', '2021-06-18 17:47:11'),
+(431, 3, 16, 171, '4', '2021-06-18 17:47:11'),
+(432, 3, 16, 172, '4', '2021-06-18 17:47:11'),
+(433, 3, 16, 173, '3', '2021-06-18 17:47:11'),
+(434, 3, 16, 174, '4', '2021-06-18 17:47:11'),
+(435, 3, 16, 175, '4', '2021-06-18 17:47:11'),
+(436, 3, 16, 176, '4', '2021-06-18 17:47:11'),
+(437, 3, 16, 177, '4', '2021-06-18 17:47:11'),
+(438, 3, 16, 178, '3', '2021-06-18 17:47:11'),
+(439, 3, 16, 179, '4', '2021-06-18 17:47:11'),
+(440, 3, 16, 180, '4', '2021-06-18 17:47:11'),
+(466, 3, 16, 178, '1', '2021-06-18 17:51:08'),
+(467, 3, 16, 179, '1', '2021-06-18 17:51:08'),
+(468, 3, 16, 180, '1', '2021-06-18 17:51:08'),
+(493, 3, 16, 177, '1', '2021-06-18 17:51:41'),
+(521, 3, 16, 177, '1', '2021-06-18 17:52:08'),
+(549, 3, 16, 177, '1', '2021-06-18 17:52:27'),
+(577, 3, 16, 177, '1', '2021-06-18 17:53:00'),
+(581, 3, 16, 177, '1', '2021-06-18 17:53:29'),
+(582, 3, 1, 1, '1', '2021-06-18 17:54:30'),
+(583, 3, 2, 4, '4', '2021-06-18 17:54:32'),
+(584, 3, 3, 19, '19', '2021-06-18 17:54:34'),
+(585, 3, 4, 20, '1', '2021-06-18 17:54:36'),
+(586, 3, 5, 21, '2', '2021-06-18 17:54:37'),
+(587, 3, 6, 22, '3', '2021-06-18 17:54:39'),
+(588, 3, 7, 24, '24', '2021-06-18 17:54:40'),
+(590, 3, 8, 25, '25', '2021-06-18 17:55:35'),
+(591, 3, 8, 26, '26', '2021-06-18 17:55:35'),
+(592, 3, 8, 25, '25', '2021-06-18 17:55:37'),
+(593, 3, 8, 26, '26', '2021-06-18 17:55:37'),
+(594, 3, 9, 31, '31', '2021-06-18 17:55:39'),
+(595, 3, 10, 39, '1231231awdawd', '2021-06-18 17:55:45'),
+(596, 3, 10, 37, '1231231awdawd', '2021-06-18 17:55:50'),
+(597, 3, 10, 39, '123123', '2021-06-18 17:56:30'),
+(598, 3, 10, 36, '123123', '2021-06-18 17:56:35'),
+(599, 3, 10, 37, '', '2021-06-18 17:56:40'),
+(600, 3, 11, 66, '66', '2021-06-18 17:56:42'),
+(601, 3, 12, 40, '1', '2021-06-18 17:56:46'),
+(602, 3, 12, 41, '2', '2021-06-18 17:56:46'),
+(603, 3, 12, 42, '3', '2021-06-18 17:56:46'),
+(604, 3, 13, 43, '43', '2021-06-18 17:56:48'),
+(605, 3, 14, 50, '50', '2021-06-18 17:56:50'),
+(606, 3, 15, 52, '52', '2021-06-18 17:56:55'),
+(607, 3, 15, 53, '53', '2021-06-18 17:56:55'),
+(608, 3, 15, 54, '54', '2021-06-18 17:56:55'),
+(609, 3, 15, 55, '55', '2021-06-18 17:56:55'),
+(664, 3, 1, 1, '1', '2021-06-18 18:00:00'),
+(665, 3, 2, 4, '4', '2021-06-18 18:00:01'),
+(666, 3, 3, 19, '19', '2021-06-18 18:00:03'),
+(667, 3, 4, 20, '1', '2021-06-18 18:00:04'),
+(668, 3, 5, 21, '2', '2021-06-18 18:00:05'),
+(669, 3, 6, 22, '3', '2021-06-18 18:00:06'),
+(670, 3, 7, 24, '24', '2021-06-18 18:00:07'),
+(671, 3, 8, 25, '25', '2021-06-18 18:00:08'),
+(672, 3, 8, 26, '26', '2021-06-18 18:00:08'),
+(673, 3, 9, 31, '31', '2021-06-18 18:00:09'),
+(674, 3, 10, 37, '', '2021-06-18 18:00:10'),
+(675, 3, 10, 39, '1231231awdawd', '2021-06-18 18:00:16'),
+(676, 3, 10, 39, '1231231awdawd', '2021-06-18 18:00:19'),
+(677, 3, 11, 66, '66', '2021-06-18 18:00:21'),
+(678, 3, 12, 40, '1', '2021-06-18 18:00:22'),
+(679, 3, 12, 41, '2', '2021-06-18 18:00:22'),
+(680, 3, 12, 42, '3', '2021-06-18 18:00:22'),
+(681, 3, 13, 43, '43', '2021-06-18 18:00:23'),
+(682, 3, 14, 50, '50', '2021-06-18 18:00:24'),
+(683, 3, 15, 52, '52', '2021-06-18 18:00:26'),
+(684, 3, 15, 53, '53', '2021-06-18 18:00:26'),
+(685, 3, 15, 54, '54', '2021-06-18 18:00:26'),
+(686, 3, 15, 55, '55', '2021-06-18 18:00:26'),
+(741, 3, 17, 181, '5', '2021-06-18 18:01:39'),
+(742, 3, 17, 182, '4', '2021-06-18 18:01:39'),
+(743, 3, 17, 183, '4', '2021-06-18 18:01:39'),
+(744, 3, 17, 184, '4', '2021-06-18 18:01:39'),
+(745, 3, 17, 185, '3', '2021-06-18 18:01:39'),
+(746, 3, 17, 186, '5', '2021-06-18 18:01:39'),
+(747, 3, 17, 187, '5', '2021-06-18 18:01:39'),
+(748, 3, 17, 188, '4', '2021-06-18 18:01:39'),
+(749, 3, 17, 189, '5', '2021-06-18 18:01:39'),
+(750, 3, 17, 190, '1', '2021-06-18 18:01:39'),
+(751, 3, 17, 191, '5', '2021-06-18 18:01:39'),
+(752, 3, 17, 192, '5', '2021-06-18 18:01:39'),
+(753, 3, 17, 193, '5', '2021-06-18 18:01:39'),
+(754, 3, 17, 194, '5', '2021-06-18 18:01:39'),
+(755, 3, 17, 195, '1', '2021-06-18 18:01:39'),
+(756, 3, 17, 196, '1', '2021-06-18 18:01:39'),
+(757, 3, 17, 197, '5', '2021-06-18 18:01:39'),
+(758, 3, 17, 198, '5', '2021-06-18 18:01:39'),
+(759, 3, 17, 199, '5', '2021-06-18 18:01:39'),
+(760, 3, 17, 201, '5', '2021-06-18 18:01:39'),
+(761, 3, 17, 202, '5', '2021-06-18 18:01:39'),
+(762, 3, 17, 203, '5', '2021-06-18 18:01:39'),
+(763, 3, 17, 204, '5', '2021-06-18 18:01:39'),
+(764, 3, 17, 205, '5', '2021-06-18 18:01:39'),
+(765, 3, 17, 206, '5', '2021-06-18 18:01:39'),
+(766, 3, 17, 207, '5', '2021-06-18 18:01:39'),
+(767, 3, 17, 208, '5', '2021-06-18 18:01:39'),
+(768, 1, 1, 1, '1', '2021-06-18 18:06:16'),
+(769, 1, 2, 4, '4', '2021-06-18 18:06:18'),
+(770, 1, 3, 18, '18', '2021-06-18 18:06:19'),
+(771, 1, 2, 4, '4', '2021-06-18 18:06:22'),
+(772, 1, 3, 18, '18', '2021-06-18 18:06:23'),
+(773, 1, 4, 20, '12312313', '2021-06-18 18:06:25'),
+(774, 1, 5, 21, '3123123123', '2021-06-18 18:06:27'),
+(775, 1, 6, 22, '13123123', '2021-06-18 18:06:28'),
+(776, 3, 1, 1, '1', '2021-06-18 18:06:33'),
+(777, 3, 2, 4, '4', '2021-06-18 18:06:35'),
+(778, 3, 3, 19, '19', '2021-06-18 18:06:37'),
+(779, 3, 4, 20, '1', '2021-06-18 18:06:37'),
+(780, 3, 2, 16, '16', '2021-06-18 18:06:42'),
+(781, 3, 1, 1, '1', '2021-06-18 18:06:49');
 
 -- --------------------------------------------------------
 
@@ -113,7 +238,7 @@ INSERT INTO `kuisioner` (`id`, `pertanyaan`) VALUES
 CREATE TABLE `kuisioner_pilihan` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_kuisioner` int(10) UNSIGNED DEFAULT NULL,
-  `type_pilihan` enum('Pilih','Isi','Rating','PilihIsi') DEFAULT 'Pilih',
+  `type_pilihan` enum('Pilih','Isi','Rating','PilihIsi','PilihBanyak') DEFAULT 'Pilih',
   `pilihan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -146,11 +271,11 @@ INSERT INTO `kuisioner_pilihan` (`id`, `id_kuisioner`, `type_pilihan`, `pilihan`
 (22, 6, 'Isi', NULL),
 (23, 7, 'Pilih', 'Ya'),
 (24, 7, 'Pilih', 'Tidak'),
-(25, 8, 'Pilih', 'Saya masih belajar/melanjutkan kuliah profesi atau pascasarjana'),
-(26, 8, 'Pilih', 'Saya menikah'),
-(27, 8, 'Pilih', 'Saya sibuk dengan keluarga dan anak-anak'),
-(28, 8, 'Pilih', 'Saya sekarang sedang mencari pekerjaan'),
-(29, 8, 'Pilih', 'Lainnya'),
+(25, 8, 'PilihBanyak', 'Saya masih belajar/melanjutkan kuliah profesi atau pascasarjana'),
+(26, 8, 'PilihBanyak', 'Saya menikah'),
+(27, 8, 'PilihBanyak', 'Saya sibuk dengan keluarga dan anak-anak'),
+(28, 8, 'PilihBanyak', 'Saya sekarang sedang mencari pekerjaan'),
+(29, 8, 'PilihBanyak', 'Lainnya'),
 (30, 9, 'Pilih', 'Tidak'),
 (31, 9, 'Pilih', 'Tidak, tapi saya sedang menunggu hasil lamaran kerja'),
 (32, 9, 'Pilih', ' Ya, saya akan mulai bekerja dalam 2 minggu ke depan'),
@@ -173,19 +298,19 @@ INSERT INTO `kuisioner_pilihan` (`id`, `id_kuisioner`, `type_pilihan`, `pilihan`
 (49, 14, 'Pilih', 'Tingkat yang Sama'),
 (50, 14, 'Pilih', 'Setingkat Lebih Rendah'),
 (51, 14, 'Pilih', 'Tidak Perlu Pendidikan Tinggi'),
-(52, 15, 'Pilih', 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya.'),
-(53, 15, 'Pilih', 'Saya belum mendapatkan pekerjaan yang lebih sesuai.'),
-(54, 15, 'Pilih', 'Di pekerjaan ini saya memeroleh prospek karir yang baik. '),
-(55, 15, 'Pilih', ' Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya.'),
-(56, 15, 'Pilih', 'Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya.'),
-(57, 15, 'Pilih', 'Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini. '),
-(58, 15, 'Pilih', 'Pekerjaan saya saat ini lebih aman/terjamin/secure'),
-(59, 15, 'Pilih', 'Pekerjaan saya saat ini lebih menarik'),
-(60, 15, 'Pilih', ' Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll.'),
-(61, 15, 'Pilih', 'Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.'),
-(62, 15, 'Pilih', 'Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya.'),
-(63, 15, 'Pilih', 'Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.'),
-(64, 15, 'Pilih', 'Lainnya'),
+(52, 15, 'PilihBanyak', 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya.'),
+(53, 15, 'PilihBanyak', 'Saya belum mendapatkan pekerjaan yang lebih sesuai.'),
+(54, 15, 'PilihBanyak', 'Di pekerjaan ini saya memeroleh prospek karir yang baik. '),
+(55, 15, 'PilihBanyak', ' Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya.'),
+(56, 15, 'PilihBanyak', 'Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya.'),
+(57, 15, 'PilihBanyak', 'Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini. '),
+(58, 15, 'PilihBanyak', 'Pekerjaan saya saat ini lebih aman/terjamin/secure'),
+(59, 15, 'PilihBanyak', 'Pekerjaan saya saat ini lebih menarik'),
+(60, 15, 'PilihBanyak', ' Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll.'),
+(61, 15, 'PilihBanyak', 'Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.'),
+(62, 15, 'PilihBanyak', 'Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya.'),
+(63, 15, 'PilihBanyak', 'Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.'),
+(64, 15, 'PilihBanyak', 'Lainnya'),
 (65, 11, 'Pilih', 'Pertanian tanaman, peternakan, perburuan dan kegiatan yang berhubungan dengan itu'),
 (66, 11, 'Pilih', '\r\nKehutanan dan penebangan kayu \r\n'),
 (67, 11, 'Pilih', '\r\nPerikanan  \r\n'),
@@ -343,7 +468,7 @@ CREATE TABLE `users` (
   `tempat_lahir` varchar(150) DEFAULT NULL,
   `tanggal_lahir` date DEFAULT NULL,
   `no_hp` varchar(15) DEFAULT NULL,
-  `foto` varchar(255) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT 'none.png',
   `alamat` text DEFAULT NULL,
   `perguruan_tinggi` varchar(255) DEFAULT NULL,
   `id_jurusan_prodi` int(11) DEFAULT NULL,
@@ -363,7 +488,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nama`, `nim`, `tempat_lahir`, `tanggal_lahir`, `no_hp`, `foto`, `alamat`, `perguruan_tinggi`, `id_jurusan_prodi`, `email`, `password`, `role`, `data_diri`, `status_pengisian`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Eko Pujianto', 'H161600482', 'Samarinda', '2021-06-04', '085828949395', 'collage (2).jpg', 'awdawd', NULL, 5, 'ekopujianto48@gmail.com', 'ca9905f316c6dade9b58ff3e4400e743', 'User', 'Lengkap', 'Sudah', NULL, NULL, NULL),
-(2, 'Indah', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'indah@gmail.com', '3fc0a7acf087f549ac2b266baf94b8b1', 'User', 'Lengkap', 'Belum', NULL, NULL, NULL);
+(2, 'Indah', NULL, NULL, NULL, NULL, 'none.png', NULL, NULL, NULL, 'indah@gmail.com', '3fc0a7acf087f549ac2b266baf94b8b1', 'User', 'Lengkap', 'Belum', NULL, NULL, NULL),
+(3, 'Eko Pujiantooo', 'H161600482', 'Samarinda', '2021-06-04', '085828949395', 'photo_2020-12-20_21-12-55 (2)-removebg-preview (2).jpg', 'awdawd', NULL, 8, 'eko@gmail.com', 'ca9905f316c6dade9b58ff3e4400e743', 'User', 'Lengkap', 'Sudah', NULL, NULL, NULL),
+(4, 'Tes1', NULL, NULL, NULL, NULL, 'none.png', NULL, NULL, NULL, 'tes@gmail.com', 'ca9905f316c6dade9b58ff3e4400e743', 'User', 'Belum Lengkap', 'Belum', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -412,7 +539,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `jawaban`
 --
 ALTER TABLE `jawaban`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=782;
 
 --
 -- AUTO_INCREMENT untuk tabel `jurusan_prodi`
@@ -436,7 +563,7 @@ ALTER TABLE `kuisioner_pilihan`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
