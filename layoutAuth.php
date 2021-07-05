@@ -38,10 +38,7 @@
                 </div>
             </div>
             <div class="d-flex flex-column flex-row-fluid position-relative p-7 overflow-hidden">
-                <div class="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10">
-                    <span class="font-weight-bold text-dark-50">Belum Punya Akun?</span>
-                    <a href="register.php" class="font-weight-bold ml-2">Daftar!</a>
-                </div>
+                
                 <div class="d-flex flex-column-fluid flex-center mt-30 mt-lg-0">
                 <?php startblock('login') ?>
                 <?php endblock() ?>

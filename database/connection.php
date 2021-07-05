@@ -20,19 +20,9 @@ if (isset($_POST['register'])) {
 	$password = mysqli_real_escape_string($db, $_POST['password']);
 	$password2 = mysqli_real_escape_string($db, $_POST['password2']);
 
-	// form validation: ensure that the form is correctly filled ...
-	// by adding (array_push()) corresponding error unto $errors array
-	if (empty($nama)) {
-		array_push($errors, "Name is required");
-	}
-	if (empty($email)) {
-		array_push($errors, "Email is required");
-	}
-	if (empty($password)) {
-		array_push($errors, "Password is required");
-	}
 	if ($password != $password2) {
-		array_push($errors, "The two passwords do not match");
+		$errors['password'] = "Password tidak sama.";
+
 	}
 
 	// first check the database to make sure 
@@ -43,11 +33,12 @@ if (isset($_POST['register'])) {
 
 	if ($user) { // if user exists
 		if ($user['nama'] === $nama) {
-			array_push($errors, "Username already exists");
+			$errors['nama'] = "Nama Telah Digunakan.";
 		}
 
 		if ($user['email'] === $email) {
-			array_push($errors, "email already exists");
+			$errors['email'] = "Email Telah Digunakan.";
+			
 		}
 	}
 
