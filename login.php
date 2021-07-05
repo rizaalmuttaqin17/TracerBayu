@@ -11,10 +11,17 @@
         <h3 class="font-size-h1">Masuk</h3>
         <p class="text-muted font-weight-bold">Masukkan email dan password Kalian</p>
     </div>
+    <?php
+                if (array_key_exists("akun",$errors)){
+                    $akun = $errors['akun'];
+                    echo '<div class="alert alert-danger show mb-2 mt-2" role="alert"><strong>'.$akun.'</strong></div>';
+                }
+            ?>
     <form class="form" method="POST" action="login.php">
         <?php include('errors.php'); ?>
         <div class="form-group">
-            <input class="form-control form-control-solid h-auto py-5 px-6" type="email" placeholder="Email" name="email" autocomplete="off" required/>
+            <input class="form-control form-control-solid h-auto py-5 px-6" type="email" placeholder="Email" name="email" autocomplete="off"  required/>
+            
         </div>
         <div class="form-group">
             <input class="form-control form-control-solid h-auto py-5 px-6" type="password" placeholder="Password" name="password" autocomplete="off" required/>

@@ -76,8 +76,9 @@ if (isset($_POST['login'])) {
 		  $_SESSION['success'] = "You are now logged in";
 		  header('location: index.php');
 		}else {
-			array_push($errors, "Wrong email/password combination");
+			$errors['akun'] = "Email atau password salah!.";
 		}
 	}
+
   }
 ?>
