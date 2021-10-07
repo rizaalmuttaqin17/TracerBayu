@@ -960,12 +960,11 @@ var KTApexChartsDemo = function () {
 	var _demo12 = function () {
 		const apexChart = "#chart_12";
 		var options = {
-			series: [44, 55, 13, 43, 22],
+			series: seriesPilihan,
 			chart: {
-				width: 380,
 				type: 'pie',
 			},
-			labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+			labels: labelsPilihan,
 			responsive: [{
 				breakpoint: 480,
 				options: {
@@ -976,8 +975,7 @@ var KTApexChartsDemo = function () {
 						position: 'bottom'
 					}
 				}
-			}],
-			colors: [primary, success, warning, danger, info]
+			}]
 		};
 
 		var chart = new ApexCharts(document.querySelector(apexChart), options);

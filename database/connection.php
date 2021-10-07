@@ -74,6 +74,12 @@ if (isset($_POST['login'])) {
 		if (mysqli_num_rows($results) == 1) {
 		  $_SESSION['email'] = $email;
 		  $_SESSION['success'] = "You are now logged in";
+			while($row=$results->fetch_assoc()){
+				$_SESSION['role'] = $row['role'];
+				$_SESSION['nama'] = $row['nama'];
+				$_SESSION['users'] = $row;
+				
+			}
 		  header('location: index.php');
 		}else {
 			$errors['akun'] = "Email atau password salah!.";

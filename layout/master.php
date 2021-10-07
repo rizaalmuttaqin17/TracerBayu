@@ -104,19 +104,38 @@ if (mysqli_num_rows($results)> 0) {
                                 <div id="kt_header_menu" class="header-menu header-menu-mobile  header-menu-layout-default ">
                                     <ul class="menu-nav ">
                                         <li class="menu-item 
-<?php startblock('menu-item-here-dashboard') ?>
-<?php endblock() ?> ">
+                                            <?php startblock('menu-item-here-dashboard') ?>
+                                            <?php endblock() ?> ">
                                             <a href="index.php" class="menu-link">
                                                 <span class="menu-text">Dashboard</span>
                                             </a>
                                         </li>
-                                        <li class="menu-item  
-<?php startblock('menu-item-here-pertanyaan') ?>
-<?php endblock() ?>">
-                                            <a href="pertanyaan.php" class="menu-link">
-                                                <span class="menu-text">Kuisioner</span>
-                                            </a>
-                                        </li>
+                                        <?php 
+                                            if($_SESSION['role'] != "Admin"){
+                                                ?>
+                                                <li class="menu-item  
+                                                    <?php startblock('menu-item-here-pertanyaan') ?>
+                                                    <?php endblock() ?>">
+                                                    <a href="pertanyaan.php" class="menu-link">
+                                                        <span class="menu-text">Kuisioner</span>
+                                                    </a>
+                                                </li>
+                                        <?php 
+                                            }
+                                        ?>
+                                        <?php 
+                                            if($_SESSION['role'] == "Admin"){
+                                                ?>
+                                                <li class="menu-item  
+                                                    <?php startblock('menu-item-here-hasil') ?>
+                                                    <?php endblock() ?>">
+                                                    <a href="hasil.php" class="menu-link">
+                                                        <span class="menu-text">Hasil Kuisioner</span>
+                                                    </a>
+                                                </li>
+                                                <?php 
+                                            }
+                                        ?>
                                     </ul>
                                 </div>
                             </div>

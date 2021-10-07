@@ -39,69 +39,70 @@ if (mysqli_num_rows($results)> 0) {
     </div>
 </div>
 <?php 
-
-if($dataMahasiswa['data_diri']== 'Lengkap'){
-    if($dataMahasiswa['status_pengisian']== 'Belum'){
-    ?>
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card card-custom bgi-no-repeat card-stretch gutter-b"
-                    style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
-                    <div class="card-body row">
-                        <div class="col-md-4">
-                            <img src="assets/img/success.png" alt="" style="width: 400px; margin:20px">
-                        </div>
-                        <div class="col-md-8 align-self-center" style="padding-left:80px;">
-                            
-                            <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu Belum Mengisi Kuisioner!</h1>
-                            <a href="pertanyaan.php"><button class="btn btn-warning btn-lg">Isi Dulu, ya!</button></a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php
-    }else{
-        ?>
+if ($_SESSION['role'] != "Admin") {
+    if ($dataMahasiswa['data_diri']== 'Lengkap') {
+        if ($dataMahasiswa['status_pengisian']== 'Belum') {
+            ?>
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card card-custom bgi-no-repeat card-stretch gutter-b"
                         style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
                         <div class="card-body row">
                             <div class="col-md-4">
-                                <img src="assets/img/sudah.png" alt="" style="width: 400px; margin:20px">
+                                <img src="assets/img/success.png" alt="" style="width: 400px; margin:20px">
                             </div>
                             <div class="col-md-8 align-self-center" style="padding-left:80px;">
                                 
-                                <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu  sudah menyelesaikan <br> Pengisian Kuisioner!</h1>
+                                <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu Belum Mengisi Kuisioner!</h1>
+                                <a href="pertanyaan.php"><button class="btn btn-warning btn-lg">Isi Dulu, ya!</button></a>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        <?php 
-    }
-}else{
-    ?>
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card card-custom bgi-no-repeat card-stretch gutter-b"
-                style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
-                <div class="card-body row">
-                    <div class="col-md-5">
-                        <img src="assets/img/belum_selesai_data_diri.png" alt="" style="width: 600px; margin:20px">
+        <?php
+        } else {
+            ?>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card card-custom bgi-no-repeat card-stretch gutter-b"
+                            style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
+                            <div class="card-body row">
+                                <div class="col-md-4">
+                                    <img src="assets/img/sudah.png" alt="" style="width: 400px; margin:20px">
+                                </div>
+                                <div class="col-md-8 align-self-center" style="padding-left:80px;">
+                                    
+                                    <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu  sudah menyelesaikan <br> Pengisian Kuisioner!</h1>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-7 align-self-center" style="padding-left:80px;">
-                        
-                        <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu belum menyelesaikan <br> pengisian data dirimu!</h1>
-                        <a href="profile.php"><button class="btn btn-warning btn-lg">Isi data diri!</button></a>
+                </div>
+            <?php
+        }
+    } else {
+        ?>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card card-custom bgi-no-repeat card-stretch gutter-b"
+                    style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
+                    <div class="card-body row">
+                        <div class="col-md-5">
+                            <img src="assets/img/belum_selesai_data_diri.png" alt="" style="width: 600px; margin:20px">
+                        </div>
+                        <div class="col-md-7 align-self-center" style="padding-left:80px;">
+                            
+                            <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu belum menyelesaikan <br> pengisian data dirimu!</h1>
+                            <a href="profile.php"><button class="btn btn-warning btn-lg">Isi data diri!</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<?php
+    <?php
+    }
 }
 
 ?>
