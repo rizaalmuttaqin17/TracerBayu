@@ -1,50 +1,116 @@
-<?php require_once 'assets/phpti/ti.php' ?>
+
+
 <?php include 'database/connection.php' ?>
-<?php include 'layoutAuth.php' ?>
-<div class="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10">
-    <span class="font-weight-bold text-dark-50">Sudah Punya Akum?</span>
-    <a href="login.php" class="font-weight-bold ml-2">Masuk di sini!</a>
-</div>
-<?php startblock('register') ?>
-<div class="login-form">
-    <div class="text-center mb-10 mb-lg-20">
-        <h3 class="font-size-h1">Daftar</h3>
-        <p class="text-muted font-weight-bold">Isi form dibawah ini untuk membuat akunmu</p>
+
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <base href="../../../../">
+        <meta charset="utf-8"/>
+        <title>Masuk | Tracer Politani</title>
+        <meta name="description" content="Singin page example"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link href="TracerBayu/assets/css/pages/login/login-3.css" rel="stylesheet" type="text/css"/>
+        <link href="TracerBayu/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
+        <link href="TracerBayu/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css"/>
+        <link href="TracerBayu/assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
+
+        <link rel="shortcut icon" href="TracerBayu/assets/img/politani-logo.ico"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        .login.login-3 .login-aside .aside-img {
+            background-size: auto; 
+            background-color: #116530 ;
+        }    
+        .flex-column-auto
+        {
+           background-color: #116530;
+        }
+        *{
+            font-family: 'Rubik'; 
+        }
+    </style>
+<body dy id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled sidebar-enabled page-loading"  >
+	<div class="d-flex flex-column flex-root">
+        <div class="login login-3 wizard d-flex flex-column flex-lg-row flex-column-fluid">
+            <div class="login-aside d-flex flex-column flex-row-auto ">
+                <div class="d-flex flex-column-auto flex-column pt-md-30">
+                    <h1 class="font-weight-bolder  display-4 text-center mt-10" style="color: #FFFFFF; ">Selamat Datang</h1>
+                </div>
+                <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center bgi-position-y-center" style="background-image: url('TracerBayu/assets/img/politani-logo.png'); background-size:400px"></div>
+            </div>
+            <div class="login-content flex-row-fluid d-flex flex-column p-10" style="background-color: #FFFFFF;">
+                <div class="d-flex flex-row-fluid flex-center">
+                    <div class="login-form">
+                        <form class="form" id="" method="POST" action="TracerBayu/register.php">
+                            <div class="pb-2 pb-md-10">
+                                <h3 class="font-weight-bolder text-dark display-4">Masuk</h3>
+                                <div class="text-muted font-weight-bold font-size-h5">
+                                    Belum Punya Akun? <a href="TracerBayu/login.php" class="text-primary font-weight-bolder">Klik di sini</a>
+                                </div>
+                            </div>
+                            <?php 
+                                $nama = '';
+                                if(isset($_POST['nama'])){
+                                    $nama= $_POST['nama'];
+                                }
+                            ?>
+                            <?php
+                                if (array_key_exists("nama",$errors)){
+                                    $valueErrorNama = $errors['nama'];
+                                    echo '<div class="alert alert-danger show mb-2 mt-2" role="alert"><strong>'.$valueErrorNama.'</strong></div>';
+                                }
+                            ?>
+                            <div class="form-group">
+                                <label class="font-size-h6 font-weight-bolder text-dark">Nama Lengkap</label>
+                                <input class="form-control form-control-solid h-auto py-5 px-6" type="text" placeholder="Nama Lengkap" name="nama" value="<?php echo $nama;  ?>" autocomplete="off" required/>
+                            </div>
+
+                            <?php 
+                            $email = '';
+                                if(isset($_POST['email'])){
+                                    $email= $_POST['email'];
+                                }
+                            ?>
+                            <?php
+                                if (array_key_exists("email",$errors)){
+                                    $valueErrorEmail = $errors['email'];
+                                    echo '<div class="alert alert-danger show mb-2 mt-2" role="alert"><strong>'.$valueErrorEmail.'</strong></div>';
+                                }
+                            ?>
+                            <div class="form-group">
+                                <label class="font-size-h6 font-weight-bolder text-dark">Email</label>
+                                <input class="form-control form-control-solid h-auto py-5 px-6" type="email" placeholder="Email" name="email" value="<?php echo $email;  ?>" autocomplete="off" required/>
+                            </div>
+
+                            <?php
+                                if (array_key_exists("password",$errors)){
+                                    $valueErrorPassword = $errors['password'];
+                                    echo '<div class="alert alert-danger show mb-2 mt-2" role="alert"><strong>'.$valueErrorPassword.'</strong></div>';
+                                }
+                            ?>
+                            <div class="form-group">
+                                <div class="d-flex justify-content-between mt-n5">
+                                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
+                                </div>
+                                <input class="form-control form-control-solid h-auto py-5 px-6" type="password" placeholder="Password" name="password" autocomplete="off" required/>
+                            </div>
+                            <div class="form-group">
+                                <div class="d-flex justify-content-between mt-n5">
+                                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Confirm Password</label>
+                                </div>
+                                <input class="form-control form-control-solid h-auto py-5 px-6" type="password" placeholder="Confirm password" name="password2" autocomplete="off" />
+                            </div>
+                            <div class="pb-lg-5 pb-10">
+                                <button name="register" type="submit" id="kt_login_singin_form_submit_button" class="btn btn-light  btn-lg btn-block font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3" style="background-color: #116530;color:#FFFFFF">Daftar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <form class="form" method="POST" action="register.php">
-        <div class="form-group">
-            <input class="form-control form-control-solid h-auto py-5 px-6" type="text" placeholder="Nama Lengkap" name="nama" autocomplete="off" required/>
-            <?php
-                if (array_key_exists("nama",$errors)){
-                    $valueErrorNama = $errors['nama'];
-                    echo '<div class="alert alert-danger show mb-2 mt-2" role="alert"><strong>'.$valueErrorNama.'</strong></div>';
-                }
-            ?>
-        </div>
-        <div class="form-group">
-            <input class="form-control form-control-solid h-auto py-5 px-6" type="email" placeholder="Email" name="email" autocomplete="off" required/>
-            <?php
-                if (array_key_exists("email",$errors)){
-                    $valueErrorEmail = $errors['email'];
-                    echo '<div class="alert alert-danger show mb-2 mt-2" role="alert"><strong>'.$valueErrorEmail.'</strong></div>';
-                }
-            ?>
-        </div>
-        <div class="form-group">
-            <input class="form-control form-control-solid h-auto py-5 px-6" type="password" placeholder="Password" name="password" autocomplete="off" required/>
-            <?php
-                if (array_key_exists("password",$errors)){
-                    $valueErrorPassword = $errors['password'];
-                    echo '<div class="alert alert-danger show mb-2 mt-2" role="alert"><strong>'.$valueErrorPassword.'</strong></div>';
-                }
-            ?>
-        </div>
-        <div class="form-group">
-            <input class="form-control form-control-solid h-auto py-5 px-6" type="password" placeholder="Confirm password" name="password2" autocomplete="off" />
-        </div>
-        <div class="form-group d-flex flex-wrap flex-center">
-            <button type="submit" name="register" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Daftar</button>
-        </div>
-    </form>
-</div>
-<?php endblock() ?>
+    </body>
+</html>

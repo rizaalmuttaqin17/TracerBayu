@@ -24,8 +24,7 @@ if (mysqli_num_rows($results)> 0) {
     array_push($errors, "Wrong email/password combination");
 }
 ?>
-<?php startblock('css') ?>
-<?php endblock() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,13 +38,15 @@ if (mysqli_num_rows($results)> 0) {
     <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="assets/img/politani-logo.ico" />
     
     <!--begin::Global Theme Bundle(used by all pages)-->
     <script src="assets/plugins/global/plugins.bundle.js"></script>
     <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="assets/js/scripts.bundle.js"></script>
     <!--end::Global Theme Bundle-->
+    <?php startblock('css') ?>
+    <?php endblock() ?>
 </head>
 
 <body id="kt_body" class="header-fixed header-mobile-fixed sidebar-enabled page-loading">
@@ -131,6 +132,20 @@ if (mysqli_num_rows($results)> 0) {
                                                     <?php endblock() ?>">
                                                     <a href="hasil.php" class="menu-link">
                                                         <span class="menu-text">Hasil Kuisioner</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item  
+                                                    <?php startblock('menu-item-here-mahasiswa') ?>
+                                                    <?php endblock() ?>">
+                                                    <a href="mahasiswa.php" class="menu-link">
+                                                        <span class="menu-text">Data Mahasiswa</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item  
+                                                    <?php startblock('menu-item-here-kuisioner') ?>
+                                                    <?php endblock() ?>">
+                                                    <a href="edit-kuisioner.php" class="menu-link">
+                                                        <span class="menu-text">Data Kuisioner</span>
                                                     </a>
                                                 </li>
                                                 <?php 
@@ -294,10 +309,7 @@ if (mysqli_num_rows($results)> 0) {
 
     <!--begin::Page Vendors(used by this page)-->
     <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-    <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM"></script>
-    <script src="assets/plugins/custom/gmaps/gmaps.js"></script>
     <!--end::Page Vendors-->
-
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->

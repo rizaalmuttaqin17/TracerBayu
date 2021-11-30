@@ -15,6 +15,8 @@
     <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <?php startblock('css') ?>
+    <?php endblock() ?>
 </head>
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled sidebar-enabled page-loading">
     <div class="d-flex flex-column flex-root">
@@ -122,5 +124,8 @@
     <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="assets/js/scripts.bundle.js"></script>
     <script src="assets/js/pages/custom/login/login-general.js"></script>
+
+    <?php startblock('js') ?>
+    <?php endblock() ?>
 </body>
 </html>

@@ -22,7 +22,6 @@ menu-item-here
     }else{
         $idKuisioner = $_GET['p'];
     }
-
     $query = "SELECT kuisioner.id AS idKuisioner,pertanyaan,kuisioner_pilihan.id AS idPilihan,type_pilihan, pilihan FROM kuisioner,kuisioner_pilihan WHERE kuisioner.id = kuisioner_pilihan.id_kuisioner AND kuisioner.id=$idKuisioner GROUP BY idKuisioner";
     $getPertanyaan = mysqli_query($db, $query);
     $results = mysqli_query($db, $query);
@@ -37,9 +36,8 @@ menu-item-here
     </div>
 </div>
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-12" style="max-height: 100vh;">
         <div class="card card-custom gutter-b ">
-
             <div class="card-body">
                 <?php
                     while($data = mysqli_fetch_assoc($results)){

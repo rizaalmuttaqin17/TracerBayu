@@ -39,73 +39,71 @@ if (mysqli_num_rows($results)> 0) {
     </div>
 </div>
 <?php 
-if ($_SESSION['role'] != "Admin") {
-    if ($dataMahasiswa['data_diri']== 'Lengkap') {
-        if ($dataMahasiswa['status_pengisian']== 'Belum') {
-            ?>
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card card-custom bgi-no-repeat card-stretch gutter-b"
-                        style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
-                        <div class="card-body row">
-                            <div class="col-md-4">
-                                <img src="assets/img/success.png" alt="" style="width: 400px; margin:20px">
-                            </div>
-                            <div class="col-md-8 align-self-center" style="padding-left:80px;">
-                                
-                                <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu Belum Mengisi Kuisioner!</h1>
-                                <a href="pertanyaan.php"><button class="btn btn-warning btn-lg">Isi Dulu, ya!</button></a>
+$query = "SELECT COUNT(id) as jumlah FROM users WHERE users.role = 'User'";
+$jumlahMahasiswa =mysqli_fetch_assoc(mysqli_query($db, $query));
 
-                            </div>
-                        </div>
+$query = "SELECT COUNT(id) as jumlah FROM users WHERE users.role = 'User' AND users.data_diri = 'Lengkap'";
+$jumlahMahasiswaLengkap =mysqli_fetch_assoc(mysqli_query($db, $query));
+
+$query = "SELECT COUNT(id) as jumlah FROM users WHERE users.role = 'User' AND users.status_pengisian = 'Sudah'";
+$jumlahMahasiswaSudah =mysqli_fetch_assoc(mysqli_query($db, $query));
+?>
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card card-custom card-stretch gutter-b">
+            <div class="card-body d-flex p-0">
+                <div class="flex-grow-1 p-20 pb-20 card-rounded flex-grow-1 bgi-no-repeat" style="background-color: #1B283F; background-position: calc(100% + 0.5rem) bottom; background-size: 100% auto; background-image: url(assets/img/politani.jpg)">
+                    <h1 class="text-white pb-5 font-weight-bolder">Selamat Datang  <br>Di Tracer Study Politani</h1>
+
+                    <p class="text-white pb-5 font-size-h5">
+                        Tracer study merupakan suatu studi yang dapat menyediakan informasi yang bermanfaat bagi kepentingan evaluasi hasil pendidikan tinggi dan selanjutnya dapat digunakan untuk penyempurnaan dan penjaminan kualitas lembaga pendidikan tinggi.
+                    </p>
+
+                    <a href="pertanyaan.php" class="btn btn-danger font-weight-bold py-2 px-6">Isi Kuisionermu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card card-custom bgi-no-repeat card-stretch gutter-b" style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
+                    <div class="card-body">
+                        <span class="svg-icon svg-icon-2x svg-icon-info">
+                            <i class="fa fa-users fa-3x" style="color: black;" aria-hidden="true"></i>
+                        </span>
+                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"> <?php echo $jumlahMahasiswa['jumlah']; ?></span>
+                        <span class="font-weight-bold text-muted  font-size-sm">Mahasiswa Terdaftar</span>
                     </div>
                 </div>
             </div>
-        <?php
-        } else {
-            ?>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card card-custom bgi-no-repeat card-stretch gutter-b"
-                            style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
-                            <div class="card-body row">
-                                <div class="col-md-4">
-                                    <img src="assets/img/sudah.png" alt="" style="width: 400px; margin:20px">
-                                </div>
-                                <div class="col-md-8 align-self-center" style="padding-left:80px;">
-                                    
-                                    <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu  sudah menyelesaikan <br> Pengisian Kuisioner!</h1>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-xl-4">
+                <div class="card card-custom bgi-no-repeat card-stretch gutter-b" style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
+                    <div class="card-body">
+                        <span class="svg-icon svg-icon-2x svg-icon-info">
+                            <i class="fa fa-file-alt fa-3x" style="color: black;" aria-hidden="true"></i>
+                        </span>
+                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"> <?php echo $jumlahMahasiswaLengkap['jumlah']; ?></span>
+                        <span class="font-weight-bold text-muted  font-size-sm">Mahasiswa Telah Melengkapi Biodata</span>
                     </div>
                 </div>
-            <?php
-        }
-    } else {
-        ?>
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card card-custom bgi-no-repeat card-stretch gutter-b"
-                    style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
-                    <div class="card-body row">
-                        <div class="col-md-5">
-                            <img src="assets/img/belum_selesai_data_diri.png" alt="" style="width: 600px; margin:20px">
-                        </div>
-                        <div class="col-md-7 align-self-center" style="padding-left:80px;">
-                            
-                            <h1 style="font-family: 'PT Sans', sans-serif;font-size:40px;">Kamu belum menyelesaikan <br> pengisian data dirimu!</h1>
-                            <a href="profile.php"><button class="btn btn-warning btn-lg">Isi data diri!</button></a>
-                        </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card card-custom bgi-no-repeat card-stretch gutter-b" style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-1.svg)">
+                    <div class="card-body">
+                        <span class="svg-icon svg-icon-2x svg-icon-info">
+                            <i class="fa fa-user-check fa-3x" style="color: black;"aria-hidden="true"></i>
+                        </span>
+                        <span class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"> <?php echo $jumlahMahasiswaSudah['jumlah']; ?></span>
+                        <span class="font-weight-bold text-muted  font-size-sm">Mahasiswa Selesai Mengisi Kuisioner</span>
                     </div>
                 </div>
             </div>
         </div>
-    <?php
-    }
-}
+    </div>
+   
+</div>
 
-?>
 <?php endblock() ?>
 
 <?php startblock('js') ?>

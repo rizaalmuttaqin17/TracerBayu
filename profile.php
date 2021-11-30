@@ -110,6 +110,13 @@ if (mysqli_num_rows($results)> 0) {
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-form-label col-3 text-lg-right text-left">Tahun Angkatan</label>
+                            <div class="col-9">
+                                <input class="form-control " type="text"
+                                    value="<?php echo $dataMahasiswa['tahun_angkatan']; ?>" name="tahun_angkatan" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-form-label col-3 text-lg-right text-left">Tempat Lahir</label>
                             <div class="col-9">
                                 <input class="form-control " type="text"
